@@ -1,25 +1,10 @@
-FROM ubuntu:16.04
+FROM buildpack-deps:trusty-scm
 MAINTAINER Hiroomi Taniguchi <hiroomi.taniguchi@gmail.com>
-
-# Install docker
-# https://docs.docker.com/install/linux/docker-ce/ubuntu/
-RUN \
-  apt-get update && \
-  apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common && \
-  curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
-  add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable" && \
-  apt-get update && \
-  apt-get install -y docker-ce
 
 # Install openjdk-8
 RUN \
+  apt-get update && \
+  apt-get install -y software-properties-common && \
   add-apt-repository ppa:openjdk-r/ppa && \
   apt-get update && \
   apt-get install -y openjdk-8-jdk
@@ -27,7 +12,7 @@ RUN \
 # Install Jenkins slave
 ENV HOME /home/jenkins
 RUN groupadd -g 10000 jenkins
-RUN useradd -c "Jenkins user" -d $HOME -u 10000 -g 10000 -G docker -m jenkins
+RUN useradd -c "Jenkins user" -d $HOME -u 10000 -g 10000 -m jenkins
 LABEL Description="This is a base image, which provides the Jenkins agent executable (slave.jar)" Vendor="Jenkins project" Version="3.19"
 
 ARG VERSION=3.19
