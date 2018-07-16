@@ -22,7 +22,3 @@ RUN \
   apt-get update && \
   apt-get install -y docker-ce
 
-# set original user
-ARG user=jenkins
-USER ${user}
-
