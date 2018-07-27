@@ -29,4 +29,4 @@ RUN \
     tee /etc/apt/sources.list.d/azure-cli.list && \
   curl -L https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
   apt-get install -y apt-transport-https && \
-  apt-get update && sudo apt-get install azure-cli
+  apt-get update && apt-get install azure-cli
