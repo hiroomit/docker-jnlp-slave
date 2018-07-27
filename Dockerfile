@@ -30,3 +30,8 @@ RUN \
   curl -L https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
   apt-get install -y apt-transport-https && \
   apt-get update && apt-get install azure-cli
+
+# Install misc package
+RUN \
+  apt-get install -y sshpass
+
