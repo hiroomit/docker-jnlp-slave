@@ -36,4 +36,5 @@ RUN \
   apt-get install -y sshpass
 
 # Update jenkins-slave
-COPY slave.jar /usr/local/bin/jenkins-slave
+COPY slave.jar /usr/share/jenkins/slave.jar
+RUN chmod 644 /usr/share/jenkins/slave.jar
