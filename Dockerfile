@@ -35,3 +35,5 @@ RUN \
 RUN \
   apt-get install -y sshpass
 
+# Update jenkins-slave
+COPY slave.jar /usr/local/bin/jenkins-slave
